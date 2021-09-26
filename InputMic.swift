@@ -9,17 +9,7 @@ import AVFoundation
 
 class InputMic {
 
-    var volume: Double = 1.0
-    var hz: Double = 20000.0
-
-    var sampleRate = 44100.0
-    var frameLength = UInt32(4096)
-   
-    
     let audioEngine = AVAudioEngine()
-    private let player = AVAudioPlayerNode()
-    var mixer = AVAudioMixerNode()
-    private var buffer: AVAudioPCMBuffer!
     
     //fft
     var mFFTHelper: FFT!
