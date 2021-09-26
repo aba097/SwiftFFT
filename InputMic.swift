@@ -8,8 +8,9 @@ import Foundation
 import AVFoundation
 
 class InputMic {
-
+    
     let audioEngine = AVAudioEngine()
+    let session = AVAudioSession.sharedInstance()
     
     //fft
     var mFFTHelper: FFT!
@@ -30,8 +31,8 @@ class InputMic {
     
     func startRecord() {
         // Audio Sessionを録音モードに変更
-        try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
-        try! AVAudioSession.sharedInstance().setActive(true)
+        try! session.setCategory(AVAudioSession.Category.playAndRecord)
+        try! session.setActive(true)
 
         
         audioEngine.inputNode.installTap(onBus: 0, bufferSize: 4096, format: nil, block: {
@@ -64,8 +65,9 @@ class InputMic {
             audioEngine.inputNode.removeTap(onBus: 0)
 
             // Audio sessionを停止
-            try! AVAudioSession.sharedInstance().setActive(false)
+            try! session.setActive(false)
         }
     }
 
 }
+
