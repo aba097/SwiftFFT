@@ -16,7 +16,7 @@ class InputMic {
     var mFFTHelper: FFT!
     var l_fftData: UnsafeMutablePointer<Float32>!
     
-    init(inMaxFramesPerSlice:Int){
+    init(inMaxFramesPerSlice:Int = 4096){
         l_fftData = UnsafeMutablePointer.allocate(capacity: 2048)
         bzero(l_fftData, size_t(2048 * MemoryLayout<Float32>.size))
         
