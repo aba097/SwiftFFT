@@ -46,10 +46,6 @@ class FFT{
             let outFFTData = outFFTData
         else { return }
         
-        // print(mFFTNormFactor) 0.00012207031
-        // print(mFFTLength) 2048
-        
-       
         //make window (fft size)
         let mFFTFulLength: vDSP_Length = mFFTLength * 2
         typealias FloatPointer = UnsafeMutablePointer<Float32>
@@ -65,21 +61,11 @@ class FFT{
         
         vDSP_vmul(inAudioData, 1, window, 1, windowAudioData, 1, mFFTFulLength)
         
-    
-        //Generate a split complex vector from the real data
-        /*
-        inAudioData.withMemoryRebound(to: DSPComplex.self, capacity: Int(mFFTLength)) {inAudioDataPtr in
-            vDSP_ctoz(inAudioDataPtr, 2, &mDspSplitComplex, 1, mFFTLength)
-       }
-        */
-        
         //Complex型に変換
         windowAudioData.withMemoryRebound(to: DSPComplex.self, capacity: Int(mFFTLength)) {inAudioDataPtr in
             vDSP_ctoz(inAudioDataPtr, 2, &mDspSplitComplex, 1, mFFTLength)
         }
-         
-        
-    
+
         
         //Take the fft and scale appropriately
         //fft
