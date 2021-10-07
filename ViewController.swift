@@ -1,8 +1,7 @@
 //
 //  ViewController.swift
-//  Tmp
 //
-//  Created by 相場智也 on 2021/09/26.
+//  Created by aba097 on 2021/09/26.
 //
 
 import UIKit
